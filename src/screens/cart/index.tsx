@@ -1,10 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Home = () => {
+const Cart: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 30}}>Home</Text>
+      <Text style={{fontSize: 30}}>Cart</Text>
     </View>
   );
 };
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default Home;
+export default Cart;
