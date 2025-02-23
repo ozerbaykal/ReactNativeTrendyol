@@ -1,11 +1,11 @@
 interface Route {
-  name: String;
+  name: string;
 }
 
 interface TabIconProps {
-  size: Number;
-  focused: boolean;
-  color: String;
+  size: number;
+  focused?: boolean;
+  color: string;
   route: Route;
 }
 

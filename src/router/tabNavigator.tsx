@@ -7,6 +7,7 @@ import Profile from '../screens/profile';
 import {TABNAVIGATOR} from '../utils/routes';
 import {Colors} from '../theme/colors';
 import TabIcon from '../components/router/tabIcon';
+import HeaderRight from '../components/router/headerRight';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,9 @@ const TabNavigator: React.FC = () => {
               color={color}
             />
           );
+        },
+        headerRight: () => {
+          return <HeaderRight />;
         },
       })}>
       <Tab.Screen name={TABNAVIGATOR.HOME} component={Home} />
