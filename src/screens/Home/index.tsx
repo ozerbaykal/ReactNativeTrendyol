@@ -9,12 +9,12 @@ import PopularProducts from '../../widgets/popularProducts';
 const Home: React.FC = () => {
   return (
     <View style={defaultScreenStyle.safeAreaContainer}>
-      <View style={defaultScreenStyle.container}>
+      <ScrollView style={defaultScreenStyle.container}>
         <Categories />
         <Introduction />
         <BestSeller />
         <PopularProducts />
-      </View>
+      </ScrollView>
     </View>
   );
 };

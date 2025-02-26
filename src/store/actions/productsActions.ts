@@ -10,3 +10,11 @@ export const getBestSellerProducts = createAsyncThunk(
     return res.data;
   },
 );
+export const getAllProducts = createAsyncThunk(
+  'products/getAllProducts',
+  async (params: object) => {
+    const res = await getRequest({params}, PRODUCTS_URLS.ALL_PRODUCTS);
+
+    return res.data;
+  },
+);
