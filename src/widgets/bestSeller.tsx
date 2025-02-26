@@ -8,8 +8,8 @@ import {RootState} from '../store';
 import ProductItem from '../components/products/productItem';
 
 const BestSeller: React.FC = () => {
-  const bestSeller: any = useSelector<RootState>(
-    state => state.products.bestSellerProducts,
+  const bestSeller = useSelector(
+    (state: RootState) => state.products.bestSellerProducts,
   );
   const dispatch = useAppDispatch();
 

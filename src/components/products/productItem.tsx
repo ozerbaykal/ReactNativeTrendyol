@@ -4,10 +4,16 @@ import {Product} from '../../models/data/productsState';
 import {ProductItemProps} from '../../models/ui/productItemProps';
 import {height, width} from '../../utils/constants';
 import {Colors} from '../../theme/colors';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {PRODUCTSNAVIGATOR} from '../../utils/routes';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
+  const navigation = useNavigation();
+
   return (
-    <Pressable style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate(PRODUCTSNAVIGATOR.PRODUCTDETAIL)}>
       <Image
         resizeMode="contain"
         source={{uri: product.image}}

@@ -15,7 +15,7 @@ interface Product {
 interface ProductsState {
   products: Product[];
   bestSellerProducts: Product[];
-  popularProducts: Product[];
+  popularProducts: Product[] | undefined | null;
   isLoading: boolean;
   isError: boolean;
 }

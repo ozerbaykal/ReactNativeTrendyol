@@ -6,3 +6,8 @@ export const TABNAVIGATOR = {
   CART: 'Cart',
   PROFİLE: 'Profile',
 };
+
+export const PRODUCTSNAVIGATOR = {
+  PRODUCTLIST: 'Tüm Ürünler',
+  PRODUCTDETAIL: 'Ürün Detayı',
+};
