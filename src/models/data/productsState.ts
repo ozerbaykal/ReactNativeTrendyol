@@ -9,7 +9,8 @@ interface Product {
 
 interface ProductsState {
   products: Product[];
-  deneme: any;
+  isLoading: boolean;
+  isError: boolean;
 }
 
 export type {ProductsState};

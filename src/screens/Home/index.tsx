@@ -1,15 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {useSelector} from 'react-redux';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import type {RootState} from '../../store';
+import {getAllProducts} from '../../store/actions/productsActions';
+import {useAppDispatch} from '../../utils/hooks';
+import {getAllCategories} from '../../store/actions/categoriesActions';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import Categories from '../../widgets/categories';
 
-const Home = () => {
-  const data: any = useSelector<RootState>(state => state.products.deneme);
-
+const Home: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 30}}>{data}</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Categories />
+    </SafeAreaView>
   );
 };
 
