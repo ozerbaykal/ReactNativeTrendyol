@@ -2,8 +2,11 @@ import {StyleSheet} from 'react-native';
 import {Colors} from '../theme/colors';
 
 export const defaultScreenStyle = StyleSheet.create({
-  container: {
+  safeAreaContainer: {
     flex: 1,
     backgroundColor: Colors.WHITE,
+  },
+  container: {
+    padding: 10,
   },
 });
