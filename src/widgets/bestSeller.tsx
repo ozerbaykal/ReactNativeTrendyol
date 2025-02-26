@@ -21,6 +21,8 @@ const BestSeller: React.FC = () => {
     <View>
       <WidgetHeaders title="Çok Satan Ürünler" />
       <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
         data={bestSeller}
         renderItem={({item}) => <ProductItem product={item} />}
       />

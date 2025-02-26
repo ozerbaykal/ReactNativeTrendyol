@@ -1,16 +1,52 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Product} from '../../models/data/productsState';
 import {ProductItemProps} from '../../models/ui/productItemProps';
+import {height, width} from '../../utils/constants';
+import {Colors} from '../../theme/colors';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
   return (
-    <View>
-      <Text>{product.title}</Text>
-    </View>
+    <Pressable style={styles.container}>
+      <Image
+        resizeMode="contain"
+        source={{uri: product.image}}
+        style={styles.image}
+      />
+      <Text numberOfLines={2} style={styles.title}>
+        {product.title}
+      </Text>
+      <Text style={styles.price}>${product.price}</Text>
+    </Pressable>
   );
 };
 
 export default ProductItem;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: width * 0.4,
+    minHeight: height * 0.25,
+    borderWidth: 0.5,
+    borderColor: Colors.GRAY,
+    marginHorizontal: 10,
+    padding: 5,
+    borderRadius: 10,
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginVertical: 10,
+  },
+  price: {
+    fontSize: 18,
+    color: Colors.PRIMARY,
+    fontWeight: 'bold',
+  },
+  image: {
+    width: width * 0.25,
+    height: height * 0.15,
+    alignSelf: 'center',
+  },
+});
