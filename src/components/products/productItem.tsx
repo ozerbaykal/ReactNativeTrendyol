@@ -13,7 +13,11 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
   return (
     <Pressable
       style={styles.container}
-      onPress={() => navigation.navigate(PRODUCTSNAVIGATOR.PRODUCTDETAIL)}>
+      onPress={() =>
+        navigation.navigate(PRODUCTSNAVIGATOR.PRODUCTDETAIL, {
+          productId: product.id,
+        })
+      }>
       <Image
         resizeMode="contain"
         source={{uri: product.image}}

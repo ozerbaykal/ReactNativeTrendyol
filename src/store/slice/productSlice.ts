@@ -3,13 +3,14 @@ import {ProductsState} from '../../models/data/productsState';
 import {
   getAllProducts,
   getBestSellerProducts,
+  getProductDetail,
 } from '../actions/productsActions';
-import {act} from 'react';
 
 const initialState: ProductsState = {
   products: [],
   bestSellerProducts: [],
   popularProducts: [],
+  product: {},
   isLoading: false,
   isError: false,
 };
@@ -37,6 +38,17 @@ export const productSlice = createSlice({
         state.popularProducts = action.payload;
       })
       .addCase(getAllProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(getProductDetail.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getProductDetail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.product = action.payload;
+      })
+      .addCase(getProductDetail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });
