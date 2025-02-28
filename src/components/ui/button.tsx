@@ -2,9 +2,9 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../../theme/colors';
 
-const Button: React.FC = () => {
+const Button: React.FC = props => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity {...props} style={styles.container}>
       <Text style={styles.title}>Sepete Ekle</Text>
     </TouchableOpacity>
   );

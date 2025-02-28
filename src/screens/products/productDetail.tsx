@@ -16,6 +16,7 @@ import {RootState} from '../../store';
 import {height, width} from '../../utils/constants';
 import {Colors} from '../../theme/colors';
 import Button from '../../components/ui/button';
+import Rate from '../../components/products/rate';
 
 const ProductDetail: React.FC = ({route}) => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ const ProductDetail: React.FC = ({route}) => {
           <Text style={styles.category}>{product.category.toUpperCase()}</Text>
 
           <Text style={styles.title}>{product.title}</Text>
+          <Rate rating={product.rating} />
           <Text style={styles.description}>{product.description}</Text>
         </ScrollView>
       </View>
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginVertical: 10,
+    marginVertical: 5,
     lineHeight: 25,
   },
   description: {
