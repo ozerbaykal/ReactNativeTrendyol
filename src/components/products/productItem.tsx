@@ -35,7 +35,7 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.4,
+    width: width * 0.45,
     minHeight: height * 0.25,
     borderWidth: 0.5,
     borderColor: Colors.GRAY,

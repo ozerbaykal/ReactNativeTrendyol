@@ -2,13 +2,11 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../../theme/colors';
 import Icon from '@react-native-vector-icons/ionicons';
-//import {RouteType} from '../routes/RouteType';
+import {RatingProps} from '../../models/ui/rateProps';
 
-//type Props = RouteType<'Rate'>;
-
-const Rate: React.FC = ({rating}) => {
+const Rate: React.FC<RatingProps> = ({rating}) => {
   const fullStar = Math.floor(rating.rate);
-  const halfStar = rating % 1 >= 0.5;
+  const halfStar = rating.rate % 1 >= 0.5;
 
   return (
     <View style={styles.container}>

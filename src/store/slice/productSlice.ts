@@ -11,6 +11,7 @@ const initialState: ProductsState = {
   bestSellerProducts: [],
   popularProducts: [],
   product: {},
+
   isLoading: false,
   isError: false,
 };

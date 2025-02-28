@@ -15,7 +15,7 @@ interface Product {
 interface ProductsState {
   products: Product[];
   bestSellerProducts: Product[];
-  product: Product;
+  product: Product[];
   popularProducts: Product[];
   isLoading: boolean;
   isError: boolean;
@@ -24,4 +24,4 @@ interface Params {
   id: number;
 }
 
-export type {ProductsState, Product, Params};
+export type {ProductsState, Product, Params, Rating};

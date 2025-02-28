@@ -21,7 +21,7 @@ import Rate from '../../components/products/rate';
 const ProductDetail: React.FC = ({route}) => {
   const dispatch = useAppDispatch();
   const {productId} = route.params;
-  const product = useSelector((state: RootState) => state.products.product);
+  const {product} = useSelector((state: RootState) => state.products);
 
   useEffect(() => {
     dispatch(getProductDetail({id: productId}));
@@ -31,21 +31,21 @@ const ProductDetail: React.FC = ({route}) => {
       <View style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Image
-            source={{uri: product.image}}
+            source={{uri: product?.image}}
             style={styles.image}
             resizeMode="center"
           />
-          <Text style={styles.category}>{product.category.toUpperCase()}</Text>
+          <Text style={styles.category}>{product.category?.toUpperCase()}</Text>
 
-          <Text style={styles.title}>{product.title}</Text>
-          <Rate rating={product.rating} />
+          <Text style={styles.title}>{product?.title}</Text>
+          {product.rating && <Rate rating={product.rating} />}
           <Text style={styles.description}>{product.description}</Text>
         </ScrollView>
       </View>
 
       <View style={styles.priceContainer}>
         <View style={{flex: 1}}>
-          <Text style={styles.price}>${product.price}</Text>
+          <Text style={styles.price}>${product?.price}</Text>
           <Text style={styles.cargo}>Kargo Bedava</Text>
         </View>
         <View style={{flex: 2, justifyContent: 'center'}}>
