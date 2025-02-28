@@ -6,6 +6,7 @@ import {height, width} from '../../utils/constants';
 import {Colors} from '../../theme/colors';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PRODUCTSNAVIGATOR} from '../../utils/routes';
+import FavoritesButton from '../favorites/favoritesButton';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
   const navigation = useNavigation();
@@ -18,6 +19,7 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
           productId: product.id,
         })
       }>
+      <FavoritesButton />
       <Image
         resizeMode="contain"
         source={{uri: product.image}}
