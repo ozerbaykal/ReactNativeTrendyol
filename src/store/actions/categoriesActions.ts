@@ -6,7 +6,7 @@ const getAllCategories = createAsyncThunk(
   'categories/getAllCategories',
   async (params: object) => {
     const res = await getRequest(params, CATEGORIES_URLS.CATEGORIES);
-    console.log(res.data);
+
     return res.data;
   },
 );

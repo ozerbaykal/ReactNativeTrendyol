@@ -11,10 +11,20 @@ export const getBestSellerProducts = createAsyncThunk(
     return res.data;
   },
 );
+interface FetchProductsParams {
+  category: string;
+  // Diğer parametreler varsa buraya ekleyin
+}
 export const getAllProducts = createAsyncThunk(
   'products/getAllProducts',
-  async (params: object) => {
-    const res = await getRequest({params}, PRODUCTS_URLS.ALL_PRODUCTS);
+  async (params: FetchProductsParams) => {
+    const productUrl =
+      params.category == 'Tümü'
+        ? PRODUCTS_URLS.ALL_PRODUCTS
+        : `${PRODUCTS_URLS.CATEGORY_PRODUCTS}/${params.category}`;
+
+    const res = await getRequest(params, productUrl);
+    console.log(params, productUrl);
 
     return res.data;
   },

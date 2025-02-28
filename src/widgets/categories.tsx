@@ -17,12 +17,14 @@ const Categories: React.FC = () => {
   }, []);
 
   return (
-    <FlatList
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      data={categories}
-      renderItem={({item}) => <CategoryItem category={item} />}
-    />
+    <View>
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={categories}
+        renderItem={({item}) => <CategoryItem category={item} />}
+      />
+    </View>
   );
 };
 

@@ -4,15 +4,20 @@ import {getAllCategories} from '../actions/categoriesActions';
 
 const initialState: CategoryState = {
   categories: [],
+  selectedCategory: 'Tümü',
   isLoading: false,
-  isError: false,
+  isError: null,
 };
 
 export const categoriesSlice = createSlice({
   name: 'categories',
 
   initialState,
-  reducers: {},
+  reducers: {
+    setCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getAllCategories.pending, state => {
@@ -21,11 +26,12 @@ export const categoriesSlice = createSlice({
       .addCase(getAllCategories.fulfilled, (state, action) => {
         (state.isLoading = false), (state.categories = action.payload);
       })
-      .addCase(getAllCategories.rejected, state => {
+      .addCase(getAllCategories.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
+        state.isError = action.error;
       });
   },
 });
 
+export const {setCategory} = categoriesSlice.actions;
 export default categoriesSlice.reducer;

@@ -13,7 +13,7 @@ const initialState: ProductsState = {
   product: {},
 
   isLoading: false,
-  isError: false,
+  isError: null,
 };
 export const productSlice = createSlice({
   name: 'products',
@@ -27,9 +27,9 @@ export const productSlice = createSlice({
       .addCase(getBestSellerProducts.fulfilled, (state, action) => {
         (state.isLoading = false), (state.bestSellerProducts = action.payload);
       })
-      .addCase(getBestSellerProducts.rejected, state => {
+      .addCase(getBestSellerProducts.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
+        state.isError = action.error;
       })
       .addCase(getAllProducts.pending, state => {
         state.isLoading = true;
@@ -40,7 +40,7 @@ export const productSlice = createSlice({
       })
       .addCase(getAllProducts.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
+        state.isError = action.error;
       })
       .addCase(getProductDetail.pending, state => {
         state.isLoading = true;
@@ -51,7 +51,7 @@ export const productSlice = createSlice({
       })
       .addCase(getProductDetail.rejected, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
+        state.isError = action.error;
       });
   },
 });

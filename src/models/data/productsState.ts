@@ -18,7 +18,7 @@ interface ProductsState {
   product: Product[];
   popularProducts: Product[];
   isLoading: boolean;
-  isError: boolean;
+  isError: any;
 }
 interface Params {
   id: number;
