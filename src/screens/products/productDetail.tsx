@@ -21,8 +21,9 @@ import FavoritesButton from '../../components/favorites/favoritesButton';
 import FreeCargo from '../../components/badges/freeCargo';
 import Discount from '../../components/badges/discount';
 import Delivery from '../../components/badges/delivery';
+import {addCart} from '../../store/slice/cartSlice';
 
-const ProductDetail: React.FC = ({route}) => {
+const ProductDetail: React.FC = ({route}: any) => {
   const dispatch = useAppDispatch();
   const {productId} = route.params;
   const {product} = useSelector((state: RootState) => state.products);
@@ -47,17 +48,11 @@ const ProductDetail: React.FC = ({route}) => {
           <Text style={styles.title}>{product?.title}</Text>
           {product.rating && <Rate rating={product.rating} />}
           <Text style={styles.description}>{product.description}</Text>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 10,
-            }}>
-            <View style={{flexDirection: 'row'}}>
-              <FreeCargo />
-              <Discount />
-              <Delivery />
-            </View>
+
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <FreeCargo />
+            <Discount />
+            <Delivery />
           </View>
         </ScrollView>
       </View>
@@ -68,7 +63,7 @@ const ProductDetail: React.FC = ({route}) => {
           <Text style={styles.cargo}>Kargo Bedava</Text>
         </View>
         <View style={{flex: 2, justifyContent: 'center'}}>
-          <Button />
+          <Button onPress={() => dispatch(addCart(product))} />
         </View>
       </View>
     </View>

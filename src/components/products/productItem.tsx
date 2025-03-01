@@ -36,12 +36,11 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
       {product.rating && <Rate size="small" rating={product.rating} />}
 
       <Text style={styles.price}>${product.price}</Text>
-      <View style={{alignItems: 'center', justifyContent: 'center'}}>
-        <View style={{flexDirection: 'row'}}>
-          <FreeCargo />
-          <Discount />
-          <Delivery />
-        </View>
+
+      <View style={{flexDirection: 'row', marginTop: 5}}>
+        <FreeCargo />
+        <Discount />
+        <Delivery />
       </View>
     </Pressable>
   );

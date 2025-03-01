@@ -2,11 +2,12 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import {Colors} from '../../theme/colors';
+import {width} from '../../utils/constants';
 
 const Discount: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Icon name="gift" size={16} color={Colors.PRIMARY} />
+      <Icon name="pricetag" size={16} color={Colors.PRIMARY} />
       <Text style={styles.text}>Eksta indirim</Text>
     </View>
   );
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.SOFT_ORANGE,
-    width: '25%',
+    width: width * 0.12,
     margin: 5,
     paddingVertical: 5,
     borderRadius: 5,

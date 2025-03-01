@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import {Colors} from '../../theme/colors';
+import {width} from '../../utils/constants';
 
 const Delivery: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.SOFT_GREEN,
-    width: '25%',
+    width: width * 0.12,
     margin: 5,
     paddingVertical: 5,
     borderRadius: 5,
