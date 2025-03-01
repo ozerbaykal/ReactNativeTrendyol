@@ -4,4 +4,6 @@ export const Colors = {
   BLACK: '#000000',
   WHITE: '#ffff',
   GREEN: '#16c47f',
+  SOFT_ORANGE: '#FFE3E3',
+  SOFT_GREEN: '#BDE8CA',
 };

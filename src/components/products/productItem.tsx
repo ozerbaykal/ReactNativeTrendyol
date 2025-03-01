@@ -8,6 +8,9 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {PRODUCTSNAVIGATOR} from '../../utils/routes';
 import FavoritesButton from '../favorites/favoritesButton';
 import Rate from './rate';
+import FreeCargo from '../badges/freeCargo';
+import Discount from '../badges/discount';
+import Delivery from '../badges/delivery';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
   const navigation = useNavigation();
@@ -29,7 +32,14 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
       <Text numberOfLines={2} style={styles.title}>
         {product.title}
       </Text>
+      <Text style={styles.category}>{product.category}</Text>
       {product.rating && <Rate size="small" rating={product.rating} />}
+      <View style={{flexDirection: 'row'}}>
+        <FreeCargo />
+        <Discount />
+        <Delivery />
+      </View>
+
       <Text style={styles.price}>${product.price}</Text>
     </Pressable>
   );
@@ -51,7 +61,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '500',
-    marginVertical: 10,
+    marginVertical: 5,
   },
   price: {
     fontSize: 18,
@@ -62,5 +72,12 @@ const styles = StyleSheet.create({
     width: width * 0.25,
     height: height * 0.15,
     alignSelf: 'center',
+  },
+  category: {
+    fontSize: 16,
+    marginLeft: 5,
+    marginVertical: 5,
+    color: Colors.GREEN,
+    fontWeight: '500',
   },
 });
