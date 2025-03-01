@@ -3,11 +3,16 @@ import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import {Colors} from '../../theme/colors';
 import {width} from '../../utils/constants';
+import {ProductItemProps} from '../../models/ui/productItemProps';
 
-const FavoritesButton = () => {
+const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Icon name="heart" size={24} color={Colors.PRIMARY} />
+      <Icon
+        name={product.isFavorite ? 'heart' : 'heart-outline'}
+        size={24}
+        color={Colors.PRIMARY}
+      />
     </TouchableOpacity>
   );
 };

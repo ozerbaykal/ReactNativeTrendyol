@@ -17,6 +17,7 @@ import {height, width} from '../../utils/constants';
 import {Colors} from '../../theme/colors';
 import Button from '../../components/ui/button';
 import Rate from '../../components/products/rate';
+import FavoritesButton from '../../components/favorites/favoritesButton';
 
 const ProductDetail: React.FC = ({route}) => {
   const dispatch = useAppDispatch();
@@ -30,11 +31,14 @@ const ProductDetail: React.FC = ({route}) => {
     <View style={defaultScreenStyle.container}>
       <View style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Image
-            source={{uri: product?.image}}
-            style={styles.image}
-            resizeMode="center"
-          />
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <FavoritesButton product={product} />
+            <Image
+              source={{uri: product?.image}}
+              style={styles.image}
+              resizeMode="center"
+            />
+          </View>
           <Text style={styles.category}>{product.category?.toUpperCase()}</Text>
 
           <Text style={styles.title}>{product?.title}</Text>
@@ -60,9 +64,9 @@ export default ProductDetail;
 
 const styles = StyleSheet.create({
   image: {
-    width: width,
+    width: width * 0.5,
     height: height * 0.3,
-    marginVertical: 20,
+    marginVertical: 10,
   },
   title: {
     fontSize: 18,

@@ -7,6 +7,7 @@ import {Colors} from '../../theme/colors';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PRODUCTSNAVIGATOR} from '../../utils/routes';
 import FavoritesButton from '../favorites/favoritesButton';
+import Rate from './rate';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
   const navigation = useNavigation();
@@ -19,7 +20,7 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
           productId: product.id,
         })
       }>
-      <FavoritesButton />
+      <FavoritesButton product={product} />
       <Image
         resizeMode="contain"
         source={{uri: product.image}}
@@ -28,6 +29,7 @@ const ProductItem: React.FC<ProductItemProps> = ({product}) => {
       <Text numberOfLines={2} style={styles.title}>
         {product.title}
       </Text>
+      {product.rating && <Rate size="small" rating={product.rating} />}
       <Text style={styles.price}>${product.price}</Text>
     </Pressable>
   );

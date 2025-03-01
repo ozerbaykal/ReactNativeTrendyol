@@ -4,23 +4,38 @@ import {Colors} from '../../theme/colors';
 import Icon from '@react-native-vector-icons/ionicons';
 import {RatingProps} from '../../models/ui/rateProps';
 
-const Rate: React.FC<RatingProps> = ({rating}) => {
+const Rate: React.FC<RatingProps> = ({rating, size}) => {
   const fullStar = Math.floor(rating.rate);
   const halfStar = rating.rate % 1 >= 0.5;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.rating}>{rating.rate}</Text>
+      <Text style={[styles.rating, {fontSize: size == 'small' ? 14 : 18}]}>
+        {rating.rate}
+      </Text>
       <View style={styles.starContainer}>
         {Array(fullStar)
           .fill(null)
           .map((item, index) => (
-            <Icon name="star" size={20} color={Colors.PRIMARY} key={index} />
+            <Icon
+              name="star"
+              size={size == 'small' ? 15 : 20}
+              color={Colors.PRIMARY}
+              key={index}
+            />
           ))}
-        {halfStar && <Icon name="star-half" size={20} color={Colors.PRIMARY} />}
+        {halfStar && (
+          <Icon
+            name="star-half"
+            size={size == 'small' ? 15 : 20}
+            color={Colors.PRIMARY}
+          />
+        )}
       </View>
       <View style={styles.countContainer}>
-        <Text style={styles.count}>| {rating.count} Değerlendirme</Text>
+        {size == 'small' ? null : (
+          <Text style={styles.count}>| {rating.count} Değerlendirme</Text>
+        )}
       </View>
     </View>
   );
@@ -38,7 +53,6 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   rating: {
-    fontSize: 20,
     fontWeight: '600',
     color: Colors.BLACK,
   },
