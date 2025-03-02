@@ -29,7 +29,7 @@ const Cart: React.FC = () => {
           <View style={styles.priceContainer}>
             <View style={{flex: 1}}>
               <Text style={styles.total}>Total :</Text>
-              <Text style={styles.price}>$ {totalPrice}</Text>
+              <Text style={styles.price}>$ {totalPrice.toFixed(2)}</Text>
               <Text style={styles.cargo}>Kargo Bedava</Text>
             </View>
             <View style={{flex: 2, justifyContent: 'center'}}>
