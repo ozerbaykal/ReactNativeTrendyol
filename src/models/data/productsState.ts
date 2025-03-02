@@ -11,6 +11,7 @@ interface Product {
   image: string;
   rating: Rating;
   isFavorite: boolean;
+  quantity: 0;
 }
 
 interface ProductsState {

@@ -6,15 +6,24 @@ import {Colors} from '../../theme/colors';
 import Delivery from '../badges/delivery';
 import FreeCargo from '../badges/freeCargo';
 import Discount from '../badges/discount';
+import {useNavigation} from '@react-navigation/native';
+import {PRODUCTSNAVIGATOR} from '../../utils/routes';
 
 const CartItem: React.FC<CartItemProps> = ({product}) => {
+  const navigation = useNavigation();
   return (
-    <Pressable style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate(PRODUCTSNAVIGATOR.PRODUCTDETAIL, {
+          productId: product.id,
+        })
+      }>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Image
-          resizeMode="contain"
           source={{uri: product.image}}
           style={styles.image}
+          resizeMode="contain"
         />
       </View>
 
@@ -30,7 +39,7 @@ const CartItem: React.FC<CartItemProps> = ({product}) => {
 
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View>
-            <Text style={styles.quantity}>2</Text>
+            <Text style={styles.quantity}>{product.quantity}</Text>
           </View>
           <View>
             <Text style={styles.price}>${product.price}</Text>
