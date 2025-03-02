@@ -1,12 +1,4 @@
-import {
-  FlatList,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
 import {useAppDispatch} from '../../utils/hooks';

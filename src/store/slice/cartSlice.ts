@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {CartState} from '../../models/data/cartState';
 import Cart from '../../screens/cart';
+import {act} from 'react';
 
 const initialState: CartState = {
   cart: [],
@@ -24,8 +25,30 @@ export const cartSlice = createSlice({
         0,
       );
     },
+    increaseQuantity: (state, action) => {
+      const {id} = action.payload;
+      const item = state.cart.find(item => item.id === id);
+      if (item) {
+        item.quantity += 1;
+      }
+      state.totalPrice = state.cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0,
+      );
+    },
+    decreaseQuantity: (state, action) => {
+      const {id} = action.payload;
+      const item = state.cart.find(item => item.id === id);
+      if (item) {
+        if (item.quantity > 0) item.quantity -= 1;
+      }
+      state.totalPrice = state.cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0,
+      );
+    },
   },
 });
 
-export const {addCart} = cartSlice.actions;
+export const {addCart, increaseQuantity, decreaseQuantity} = cartSlice.actions;
 export default cartSlice.reducer;

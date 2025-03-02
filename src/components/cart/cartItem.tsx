@@ -8,6 +8,7 @@ import FreeCargo from '../badges/freeCargo';
 import Discount from '../badges/discount';
 import {useNavigation} from '@react-navigation/native';
 import {PRODUCTSNAVIGATOR} from '../../utils/routes';
+import Counter from './counter';
 
 const CartItem: React.FC<CartItemProps> = ({product}) => {
   const navigation = useNavigation();
@@ -39,7 +40,7 @@ const CartItem: React.FC<CartItemProps> = ({product}) => {
 
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View>
-            <Text style={styles.quantity}>{product.quantity}</Text>
+            <Counter product={product} quantity={product.quantity} />
           </View>
           <View>
             <Text style={styles.price}>${product.price}</Text>
