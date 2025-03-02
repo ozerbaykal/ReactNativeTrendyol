@@ -8,10 +8,13 @@ import {TABNAVIGATOR} from '../utils/routes';
 import {Colors} from '../theme/colors';
 import TabIcon from '../components/router/tabIcon';
 import HeaderRight from '../components/router/headerRight';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator: React.FC = () => {
+  const {cart} = useSelector((state: RootState) => state.cart);
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -38,7 +41,7 @@ const TabNavigator: React.FC = () => {
       <Tab.Screen name={TABNAVIGATOR.FAVORİTES} component={Favorites} />
       <Tab.Screen
         options={{
-          tabBarBadge: '0',
+          tabBarBadge: cart.length,
         }}
         name={TABNAVIGATOR.CART}
         component={Cart}

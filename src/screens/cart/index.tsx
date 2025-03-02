@@ -10,26 +10,33 @@ import {Colors} from '../../theme/colors';
 import {height} from '../../utils/constants';
 
 const Cart: React.FC = () => {
-  const {cart} = useSelector((state: RootState) => state.cart);
+  const {cart, totalPrice} = useSelector((state: RootState) => state.cart);
   console.log(cart);
   return (
     <View style={defaultScreenStyle.safeAreaContainer}>
       <View style={defaultScreenStyle.container}>
         <FlatList
+          ListEmptyComponent={
+            <Text style={styles.ListEmptyComponent}>
+              Sepete henüz Ürün eklemediniz !
+            </Text>
+          }
           showsVerticalScrollIndicator={false}
           data={cart}
           renderItem={({item}) => <CartItem product={item} />}
         />
-        <View style={styles.priceContainer}>
-          <View style={{flex: 1}}>
-            <Text style={styles.total}>Total :</Text>
-            <Text style={styles.price}>${0}</Text>
-            <Text style={styles.cargo}>Kargo Bedava</Text>
+        {cart.length == 0 ? null : (
+          <View style={styles.priceContainer}>
+            <View style={{flex: 1}}>
+              <Text style={styles.total}>Total :</Text>
+              <Text style={styles.price}>$ {totalPrice}</Text>
+              <Text style={styles.cargo}>Kargo Bedava</Text>
+            </View>
+            <View style={{flex: 2, justifyContent: 'center'}}>
+              <Button title="Satın Al" />
+            </View>
           </View>
-          <View style={{flex: 2, justifyContent: 'center'}}>
-            <Button title="Satın Al" />
-          </View>
-        </View>
+        )}
       </View>
     </View>
   );
@@ -61,6 +68,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 5,
+  },
+  ListEmptyComponent: {
+    fontSize: 20,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 30,
   },
 });
 export default Cart;
