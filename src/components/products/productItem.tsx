@@ -13,7 +13,7 @@ import Discount from '../badges/discount';
 import Delivery from '../badges/delivery';
 
 const ProductItem: React.FC<ProductItemProps> = ({product}) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   return (
     <Pressable

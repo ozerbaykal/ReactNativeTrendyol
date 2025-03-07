@@ -21,7 +21,7 @@ import {useDispatch} from 'react-redux';
 import {removeFromCart} from '../../store/slice/cartSlice';
 
 const CartItem: React.FC<CartItemProps> = ({product}) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   return (
     <Pressable
