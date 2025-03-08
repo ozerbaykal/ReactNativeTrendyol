@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {Alert, FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
@@ -8,10 +8,31 @@ import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
 import Button from '../../components/ui/button';
 import {Colors} from '../../theme/colors';
 import {height} from '../../utils/constants';
+import {useNavigation} from '@react-navigation/native';
+import {AUTHNAVIGATOR} from '../../utils/routes';
 
 const Cart: React.FC = () => {
   const {cart, totalPrice} = useSelector((state: RootState) => state.cart);
   console.log(cart);
+  const {isLogin} = useSelector((state: RootState) => state.auth);
+  const navigation = useNavigation<any>();
+
+  const checkLogin = () => {
+    if (!isLogin) {
+      Alert.alert('Giriş yapınız', 'Satın Almak için,lütfen giriş yapınız', [
+        {
+          text: 'Çıkış',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Giriş Yap',
+          onPress: () => navigation.navigate(AUTHNAVIGATOR.LOGIN),
+        },
+      ]);
+    }
+  };
+
   return (
     <View style={defaultScreenStyle.safeAreaContainer}>
       <View style={defaultScreenStyle.container}>
@@ -33,7 +54,7 @@ const Cart: React.FC = () => {
               <Text style={styles.cargo}>Kargo Bedava</Text>
             </View>
             <View style={{flex: 2, justifyContent: 'center'}}>
-              <Button title="Satın Al" />
+              <Button onPress={() => checkLogin()} title="Satın Al" />
             </View>
           </View>
         )}

@@ -1,13 +1,39 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import {Colors} from '../../theme/colors';
 import {width} from '../../utils/constants';
 import {ProductItemProps} from '../../models/ui/productItemProps';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store';
+import {useNavigation} from '@react-navigation/native';
+import {AUTHNAVIGATOR} from '../../utils/routes';
 
 const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
+  const {isLogin} = useSelector((state: RootState) => state.auth);
+  const navigation = useNavigation<any>();
+  const checkLogin = () => {
+    if (!isLogin) {
+      Alert.alert(
+        'Giriş yapınız',
+        'Favorilere eklemek için,lütfen giriş yapınız!',
+        [
+          {
+            text: 'iptal',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {
+            text: 'Giriş Yap',
+            onPress: () => navigation.navigate(AUTHNAVIGATOR.LOGIN),
+          },
+        ],
+      );
+    }
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={checkLogin} style={styles.container}>
       <Icon
         name={product.isFavorite ? 'heart' : 'heart-outline'}
         size={24}

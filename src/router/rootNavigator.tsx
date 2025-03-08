@@ -1,9 +1,10 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabNavigator from './tabNavigator';
-import {PRODUCTSNAVIGATOR, TABNAVIGATOR} from '../utils/routes';
+import {AUTHNAVIGATOR, PRODUCTSNAVIGATOR, TABNAVIGATOR} from '../utils/routes';
 import ProductList from '../screens/products';
 import ProductDetail from '../screens/products/productDetail';
 import {Colors} from '../theme/colors';
+import Login from '../screens/login';
 
 const RootNavigator: React.FC = () => {
   const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ const RootNavigator: React.FC = () => {
         name={PRODUCTSNAVIGATOR.PRODUCTDETAIL}
         component={ProductDetail}
       />
+      <Stack.Screen name={AUTHNAVIGATOR.LOGIN} component={Login} />
     </Stack.Navigator>
   );
 };
