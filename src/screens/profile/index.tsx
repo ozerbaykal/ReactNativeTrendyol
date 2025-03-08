@@ -3,17 +3,28 @@ import React from 'react';
 
 const Profile: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 30}}>Profile </Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'green',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text
+        style={{
+          fontSize: 30,
+          backgroundColor: 'blue',
+        }}>
+        Profile{' '}
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: 'red',
   },
 });
 
