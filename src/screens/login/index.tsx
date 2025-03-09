@@ -6,26 +6,30 @@ import {height, width} from '../../utils/constants';
 import {Colors} from '../../theme/colors';
 import {Formik} from 'formik';
 import {LoginForm} from '../../models/ui/loginForm';
+import getUserLogin from '../../store/actions/authAction';
+import {useAppDispatch} from '../../utils/hooks';
 
 const Login: React.FC = () => {
   const initialValues: LoginForm = {
-    email: 'ozer@baykal',
-    password: ' 1234',
+    username: 'johnd',
+    password: 'm38rmF$',
   };
+  const dispatch = useAppDispatch();
+
   return (
     <View style={defaultScreenStyle.safeAreaContainer}>
       <ScrollView>
         <Formik
           initialValues={initialValues}
-          onSubmit={values => console.log(values)}>
+          onSubmit={values => dispatch(getUserLogin(values))}>
           {({handleChange, handleBlur, handleSubmit, values}) => (
             <View style={defaultScreenStyle.container}>
               <Input
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur}
                 //onSubmit={() => console.log(values)}
-                value={values.email}
-                title="E-Posta"
+                value={values.username}
+                title="Kullanıcı Adı"
               />
               <Input
                 onChangeText={handleChange('password')}

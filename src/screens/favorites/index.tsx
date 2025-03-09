@@ -1,10 +1,20 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store';
+import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
 
 const Favorites: React.FC = () => {
+  const {favorites} = useSelector((state: RootState) => state.favorites);
+
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 30}}>Favorites</Text>
+    <View style={defaultScreenStyle.safeAreaContainer}>
+      <View style={defaultScreenStyle.container}>
+        <FlatList
+          data={favorites}
+          renderItem={({item}) => <Text>{item.isFavorite}</Text>}
+        />
+      </View>
     </View>
   );
 };

@@ -3,6 +3,7 @@ import productSlice from './slice/productSlice';
 import categoriesSlice from './slice/categorySlice';
 import cartSlice from './slice/cartSlice';
 import authSlice from './slice/authSlice';
+import favoriteSlice from './slice/favoriteSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     categories: categoriesSlice,
     cart: cartSlice,
     auth: authSlice,
+    favorites: favoriteSlice,
   },
 });
 1;

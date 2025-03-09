@@ -13,6 +13,7 @@ interface AuthState {
   isLogin: boolean;
   isLoading: boolean;
   isError: any;
+  token: string | null;
 }
 
 export type {AuthState, User};

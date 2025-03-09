@@ -9,7 +9,7 @@ interface Product {
   category: string;
   description: string;
   image: string;
-  rating: Rating;
+  rating: Rating | undefined;
   isFavorite: boolean;
   quantity: 0;
 }

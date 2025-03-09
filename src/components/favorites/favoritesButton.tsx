@@ -8,10 +8,14 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 import {useNavigation} from '@react-navigation/native';
 import {AUTHNAVIGATOR} from '../../utils/routes';
+import {useAppDispatch} from '../../utils/hooks';
+import {addFavorite} from '../../store/slice/favoriteSlice';
 
 const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
   const {isLogin} = useSelector((state: RootState) => state.auth);
   const navigation = useNavigation<any>();
+  const dispatch = useAppDispatch();
+
   const checkLogin = () => {
     if (!isLogin) {
       Alert.alert(
@@ -29,6 +33,8 @@ const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
           },
         ],
       );
+    } else {
+      dispatch(addFavorite(product));
     }
   };
 
