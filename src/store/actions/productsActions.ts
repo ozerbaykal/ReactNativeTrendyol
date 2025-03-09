@@ -23,7 +23,7 @@ export const getAllProducts = createAsyncThunk(
         ? PRODUCTS_URLS.ALL_PRODUCTS
         : `${PRODUCTS_URLS.CATEGORY_PRODUCTS}/${params.category}`;
 
-    const res = await getRequest(params, productUrl);
+    const res = await getRequest({params}, productUrl);
     console.log(params, productUrl);
 
     return res.data;

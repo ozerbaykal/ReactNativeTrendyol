@@ -6,9 +6,14 @@ import {addCart} from '../../store/slice/cartSlice';
 import {ButtonProps} from '../../models/ui/buttonProps';
 
 const Button: React.FC<ButtonProps> = props => {
-  const {title} = props;
+  const {title, disabled} = props;
   return (
-    <TouchableOpacity {...props} style={styles.container}>
+    <TouchableOpacity
+      {...props}
+      style={[
+        styles.container,
+        {backgroundColor: disabled ? Colors.GRAY : Colors.PRIMARY},
+      ]}>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );

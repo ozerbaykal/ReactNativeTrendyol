@@ -10,17 +10,7 @@ const initialState: ProductsState = {
   products: [],
   bestSellerProducts: [],
   popularProducts: [],
-  product: {
-    id: 0,
-    title: '',
-    price: 0,
-    category: '',
-    description: '',
-    image: '',
-    rating: undefined,
-    isFavorite: false,
-    quantity: 0,
-  },
+  product: {},
 
   isLoading: false,
   isError: null,
@@ -34,6 +24,20 @@ export const productSlice = createSlice({
       const exitingProduct = state.popularProducts.find(
         item => item.id === product.id,
       );
+      const exitingBestSellerProduct = state.bestSellerProducts.find(
+        item => item.id === product.id,
+      );
+      const exitingProducts = state.products.find(
+        item => item.id === product.id,
+      );
+      if (exitingProducts) {
+        exitingProducts.isFavorite = !exitingProducts.isFavorite;
+      }
+
+      if (exitingBestSellerProduct) {
+        exitingBestSellerProduct.isFavorite =
+          !exitingBestSellerProduct.isFavorite;
+      }
 
       if (exitingProduct) {
         exitingProduct.isFavorite = !exitingProduct.isFavorite;

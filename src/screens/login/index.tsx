@@ -8,13 +8,26 @@ import {Formik} from 'formik';
 import {LoginForm} from '../../models/ui/loginForm';
 import getUserLogin from '../../store/actions/authAction';
 import {useAppDispatch} from '../../utils/hooks';
+import {RootState} from '../../store';
+import {useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const Login: React.FC = () => {
   const initialValues: LoginForm = {
     username: 'johnd',
     password: 'm38rmF$',
   };
+  const {isLogin, isLoading} = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
+  console.log(isLogin);
+
+  useEffect(() => {
+    if (isLogin) {
+      navigation.goBack();
+    }
+  }, [isLogin]);
 
   return (
     <View style={defaultScreenStyle.safeAreaContainer}>
@@ -42,7 +55,11 @@ const Login: React.FC = () => {
               <Text style={styles.forgotPassword}>Şifremi Unuttum</Text>
 
               <View style={styles.buttonContainer}>
-                <Button onPress={handleSubmit} title="Giriş Yap" />
+                <Button
+                  disabled={isLoading}
+                  onPress={handleSubmit}
+                  title="Giriş Yap"
+                />
               </View>
             </View>
           )}
