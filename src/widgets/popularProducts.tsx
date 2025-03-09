@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../store';
 import {getAllProducts} from '../store/actions/productsActions';
 import ProductItem from '../components/products/productItem';
+import {favorite} from '../store/slice/productSlice';
 
 const PopularProducts = () => {
   const popularProducts = useSelector(

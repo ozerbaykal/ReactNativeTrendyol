@@ -18,6 +18,9 @@ const favoriteSlice = createSlice({
       );
       if (exitingProduct) {
         exitingProduct.isFavorite = false;
+        state.favorites = state.favorites.filter(
+          item => item.id !== product.id,
+        );
       } else {
         state.favorites.push({...product, isFavorite: true});
       }

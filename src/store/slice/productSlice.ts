@@ -10,19 +10,17 @@ const initialState: ProductsState = {
   products: [],
   bestSellerProducts: [],
   popularProducts: [],
-  product: [
-    {
-      id: 0,
-      title: '',
-      price: 0,
-      category: '',
-      description: '',
-      image: '',
-      rating: undefined,
-      isFavorite: false,
-      quantity: 0,
-    },
-  ],
+  product: {
+    id: 0,
+    title: '',
+    price: 0,
+    category: '',
+    description: '',
+    image: '',
+    rating: undefined,
+    isFavorite: false,
+    quantity: 0,
+  },
 
   isLoading: false,
   isError: null,
@@ -30,7 +28,21 @@ const initialState: ProductsState = {
 export const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    favorite: (state, action) => {
+      const product = action.payload;
+      const exitingProduct = state.popularProducts.find(
+        item => item.id === product.id,
+      );
+
+      if (exitingProduct) {
+        exitingProduct.isFavorite = !exitingProduct.isFavorite;
+      }
+      if (product.id === state.product.id) {
+        state.product.isFavorite = !state.product.isFavorite;
+      }
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getBestSellerProducts.pending, state => {
@@ -67,5 +79,6 @@ export const productSlice = createSlice({
       });
   },
 });
+export const {favorite} = productSlice.actions;
 
 export default productSlice.reducer;

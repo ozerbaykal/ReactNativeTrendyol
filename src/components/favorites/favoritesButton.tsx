@@ -1,5 +1,5 @@
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import {Colors} from '../../theme/colors';
 import {width} from '../../utils/constants';
@@ -10,6 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {AUTHNAVIGATOR} from '../../utils/routes';
 import {useAppDispatch} from '../../utils/hooks';
 import {addFavorite} from '../../store/slice/favoriteSlice';
+import {favorite} from '../../store/slice/productSlice';
 
 const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
   const {isLogin} = useSelector((state: RootState) => state.auth);
@@ -35,6 +36,7 @@ const FavoritesButton: React.FC<ProductItemProps> = ({product}) => {
       );
     } else {
       dispatch(addFavorite(product));
+      dispatch(favorite(product));
     }
   };
 

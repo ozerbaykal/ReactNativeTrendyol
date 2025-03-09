@@ -3,6 +3,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 import {defaultScreenStyle} from '../../styles/defaultScreenStyle';
+import ProductItem from '../../components/products/productItem';
 
 const Favorites: React.FC = () => {
   const {favorites} = useSelector((state: RootState) => state.favorites);
@@ -11,8 +12,10 @@ const Favorites: React.FC = () => {
     <View style={defaultScreenStyle.safeAreaContainer}>
       <View style={defaultScreenStyle.container}>
         <FlatList
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
           data={favorites}
-          renderItem={({item}) => <Text>{item.isFavorite}</Text>}
+          renderItem={({item}) => <ProductItem product={item} />}
         />
       </View>
     </View>
