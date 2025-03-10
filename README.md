@@ -1,97 +1,142 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🛍️ Trendyol Clone (React Native & TypeScript)
 
-# Getting Started
+This project is a **Trendyol clone** developed using **React Native and TypeScript**.  
+It allows users to add and remove products from the favorites and cart, as well as handle authentication processes.  
+The backend is powered by **Fake API Store**.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 📸 Screenshots
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 📹 Video GIF
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+![Home Screen](src/assets/images/screen_video.gif)
 
-```sh
-# Using npm
-npm start
+### 🏠 Home Screen
 
-# OR using Yarn
-yarn start
+![Home Screen](src/assets/images/home_screen.png)
+
+### 🩳 AllProducts Screen
+
+![AllProducts Screen](src/assets/images/allProducts_screen.png)
+
+### 👔 Product Detail Screen
+
+![Product Detail Screen](src/assets/images/productDetail_screen.png)
+
+### 🛒 Cart Screen
+
+![Cart Screen](src/assets/images/cart_screen.png)
+
+### ❤️ Favorites Screen
+
+![Favorites Screen](src/assets/images/favorites_screen.png)
+
+### 👨‍🏫 Profile Screen
+
+![Profile Screen](src/assets/images/profile_screen.png)
+
+### 🔐 Login Screen
+
+![Login Screen](src/assets/images/login_screen.png)
+
+---
+
+## 🚀 Features
+
+- ✅ **Product Listing** – Fetching and displaying products from the Fake API
+- ✅ **Add/Remove from Cart** – Users can add and remove products from their cart
+- ✅ **Add/Remove from Favorites** – Users can add and remove products from their favorites
+- ✅ **Authentication (Authorization)** – Login and logout functionality
+- ✅ **React Navigation Integration** – Seamless navigation between screens
+- ✅ **Global State Management with Redux Toolkit**
+
+---
+
+## 🛠️ Technologies & Libraries Used
+
+| Technology/Library                   | Description                       |
+| ------------------------------------ | --------------------------------- |
+| **React Native** (v0.78.0)           | Mobile app development framework  |
+| **TypeScript**                       | For safer and scalable code       |
+| **Redux Toolkit** (@reduxjs/toolkit) | State management solution         |
+| **React Navigation**                 | For screen navigation and routing |
+| **Axios**                            | For making HTTP requests          |
+| **Formik & Yup**                     | Form handling and validation      |
+| **Async Storage**                    | Local storage for user data       |
+| **React Native Vector Icons**        | To include custom icons           |
+
+---
+
+## 📦 Installation
+
+Clone the project and install dependencies:
+
+```bash
+git clone https://github.com/ozerbaykal/ReactNativeTrendyol.git
+cd trendyol-clone
+npm install  # or yarn install
+
+📱 Running the App
+
+For Android:
+npx react-native run-android
+
+For iOS:
+npx react-native run-ios
+
+Note: For iOS, don't forget to run:
+cd ios && pod install
+
 ```
 
-## Step 2: Build and run your app
+## 🔧 Project Structure
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+/trendyol-clone
+│── src
+│ ├── components # Reusable UI components
+│ ├── screens # Screens (Home, Cart, Favorites, Login, etc.)
+│ ├── navigation # React Navigation setup
+│ ├── store # Redux Toolkit Store & Slices
+│ ├── services # API requests (Axios)
+│ ├── utils # Utility functions
+│ ├── assets # Images, icons, etc.
+│── App.tsx # Main application file
+│── package.json # Dependencies
+│── README.md # Project documentation
 
-### Android
+## 🖥️ API Usage
 
-```sh
-# Using npm
-npm run android
+his project uses Fake API Store as a backend. Below are the main endpoints:
 
-# OR using Yarn
-yarn android
-```
+- Get All Products: https://fakestoreapi.com/products
+- Get Single Product: https://fakestoreapi.com/products/{id}
+- Login: https://fakestoreapi.com/auth/login
 
-### iOS
+## 📌 Future Updates
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- 🚀 Planned features:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- 🛒 Payment Integration
+- 🌎 Multi-language Support
+- 🌙 Dark Mode
 
-```sh
-bundle install
-```
+## Developer
 
-Then, and every time you update your native dependencies, run:
+Özer Baykal
 
-```sh
-bundle exec pod install
-```
+## ✨ Contributions
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Contributions are welcome! Please open an issue first to discuss what you would like to change.
 
-```sh
-# Using npm
-npm run ios
+- 1.Fork the project
+- 2.Create your feature branch (git checkout -b feature/NewFeature)
+- 3.Commit your changes (git commit -m 'Add new feature')
+- 4.Push to the branch (git push origin feature/NewFeature)
+- 5.Open a Pull Request
 
-# OR using Yarn
-yarn ios
-```
+## Contact 📬
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**Özer BAYKAL**  
+Email: [baykalozer87@gmail.com](mailto:baykalozer87@gmail.com)  
+Project Link: [nativeTrendyol](https://github.com/ozerbaykal/ReactNativeTrendyol)
