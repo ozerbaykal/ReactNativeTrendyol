@@ -4,13 +4,14 @@ import {Colors} from '../../theme/colors';
 import {ButtonProps} from '../../models/ui/buttonProps';
 
 const Button: React.FC<ButtonProps> = props => {
-  const {title, disabled} = props;
+  const {title, disabled, color} = props;
   return (
     <TouchableOpacity
       {...props}
       style={[
         styles.container,
         {backgroundColor: disabled ? Colors.GRAY : Colors.PRIMARY},
+        {backgroundColor: color ? color : Colors.PRIMARY},
       ]}>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
@@ -28,8 +29,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.PRIMARY,
+    //backgroundColor: Colors.PRIMARY,
     padding: 10,
     borderRadius: 10,
+    margin: 8,
   },
 });

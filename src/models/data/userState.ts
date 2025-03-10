@@ -17,7 +17,7 @@ interface Adress {
 interface User {
   id: number;
   name: Name;
-  mail: string;
+  email: string;
   phone: string;
   address: Adress;
   username: string;
