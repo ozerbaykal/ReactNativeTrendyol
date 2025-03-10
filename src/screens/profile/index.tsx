@@ -2,9 +2,15 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
+import {useAppDispatch} from '../../utils/hooks';
+import {getUserInfo} from '../../store/actions/userActions';
 
 const Profile: React.FC = () => {
   const {token} = useSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getUserInfo({token}));
+  }, []);
 
   return (
     <View

@@ -1,8 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../../theme/colors';
-import {useDispatch} from 'react-redux';
-import {addCart} from '../../store/slice/cartSlice';
 import {ButtonProps} from '../../models/ui/buttonProps';
 
 const Button: React.FC<ButtonProps> = props => {

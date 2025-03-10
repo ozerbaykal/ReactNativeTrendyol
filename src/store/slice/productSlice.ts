@@ -10,7 +10,17 @@ const initialState: ProductsState = {
   products: [],
   bestSellerProducts: [],
   popularProducts: [],
-  product: {},
+  product: {
+    id: 0,
+    title: '',
+    price: 0,
+    category: '',
+    description: '',
+    image: '',
+    rating: undefined,
+    isFavorite: false,
+    quantity: 0,
+  },
 
   isLoading: false,
   isError: null,
